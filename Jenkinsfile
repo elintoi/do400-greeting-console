@@ -21,6 +21,12 @@ pipeline{
             }
         }
 
-        // Add the Release stage here
+        stage('Release') {
+		steps {
+			sh '''
+			oc project bqoqql-greeting
+			oc start-build greeting-console --follow --wait
+			'''
+		}
     }
 }
